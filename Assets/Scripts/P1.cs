@@ -92,14 +92,14 @@ public class P1 : MonoBehaviour
             }
         if (Input.GetKeyDown(KeyCode.S))
         {
-           crouch = true;
-           cb.size = new Vector2(1.8f, 0.8f);
-           Debug.Log("Button was pressed");
+            crouch = true;
+            cb.size = new Vector2(1.8f, 0.8f);
+            Debug.Log("Button was pressed");
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
-           crouch = false;
-           cb.size = new Vector2(0.8f, 1.74f);
+            crouch = false;
+            cb.size = new Vector2(0.8f, 1.74f);
         }
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
         {
@@ -123,8 +123,10 @@ public class P1 : MonoBehaviour
         onGround = false;
     }
 
-    void OnTriggerEnter2D(Collider2D other){
-        if (other.tag == "spikes"){
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "spikes")
+        {
             Debug.Log("The player has died");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
