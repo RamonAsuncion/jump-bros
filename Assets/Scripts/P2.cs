@@ -10,9 +10,9 @@ public class P2 : MonoBehaviour
     public Animation anim;
     public Animator animator;
 
-    public float JUMP_POWER = 350;
-    public float MOVE_SPEED = 7.5f;
-    public float CROUCH_SPEED = 2f;
+    public float JUMP_POWER = 250;
+    public float MOVE_SPEED = 5.5f;
+    public float CROUCH_SPEED = 1.5f;
 
     bool onGround = false;
     bool crouch = false;
@@ -119,8 +119,10 @@ public class P2 : MonoBehaviour
     {
         onGround = false;
     }
-    void OnTriggerEnter2D(Collider2D other){
-        if (other.tag == "spikes"){
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "spikes")
+        {
             Debug.Log("The player has died");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

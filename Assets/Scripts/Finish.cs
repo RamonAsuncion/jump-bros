@@ -10,6 +10,8 @@ public class Finish : MonoBehaviour
 
     public Text txt;
 
+    public GameObject txtUpdate;
+
     private void Start()
     {
         txt = GameObject.FindObjectOfType<Text>();

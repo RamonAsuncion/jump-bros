@@ -10,9 +10,9 @@ public class P1 : MonoBehaviour
     public Animation anim;
     public Animator animator;
 
-    public float JUMP_POWER = 350;
-    public float MOVE_SPEED = 7.5f;
-    public float CROUCH_SPEED = 2f;
+    public float JUMP_POWER = 250;
+    public float MOVE_SPEED = 5.5f;
+    public float CROUCH_SPEED = 1.5f;
 
     bool onGround = false;
     public bool crouch = false;
