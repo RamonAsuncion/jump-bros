@@ -7,8 +7,8 @@ Jump Bros is a 2D game made in Unity to use teamwork to win.
 
 Local:
 
-Player 1: W - Jump, S - Walk left, D - Walk right, and S - Crouch. 
-Player 2: Up Arrow - Jump, Left Arrow - Walk left, Right Arrow - Walk right, and Down Arrow - Crouch
+- Player 1: W - Jump, S - Walk left, D - Walk right, and S - Crouch. 
+- Player 2: Up Arrow - Jump, Left Arrow - Walk left, Right Arrow - Walk right, and Down Arrow - Crouch
 
 
 ## Objective
