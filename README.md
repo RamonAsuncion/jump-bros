@@ -1,7 +1,7 @@
 # Jump Bros 
-![Logo](https://camo.githubusercontent.com/995bca3303dc80891a41e382ab3e6ba27601ed62/68747470733a2f2f64322e616c7465726e6174697665746f2e6e65742f646973742f69636f6e732f616c6c73696465735f3130313336302e706e673f77696474683d3634266865696768743d3634266d6f64653d63726f702675707363616c653d66616c7365)
+![Logo]()
 
-Allsides Webscraper is a 2D game made in Unity to use teamwork to win. 
+Jump Bros is a 2D game made in Unity to use teamwork to win. 
 
 ## How to move
 
