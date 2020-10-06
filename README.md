@@ -21,3 +21,14 @@ The objective of the game is to get to the last game
 Created by Sora2020 and Me. 
 We created this game during a Hackathon. 
 
+
+# Upcoming features 
+- Add multiplayer and keep an option to keep it local
+- New maps 
+- Page to look at all the levels with a lock symbol on them 
+- Tutorial 
+- Fog 
+- Better level design 
+- Better main menu 
+- Option to change difficulty to save level checkpoint or reset 
+- Add wining particles 
