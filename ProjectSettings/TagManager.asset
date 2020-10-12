@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - spikes
   - MainButtons
+  - confetti
   layers:
   - Default
   - TransparentFX
