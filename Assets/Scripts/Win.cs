@@ -6,15 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class Win : MonoBehaviour
 {
-    public GameObject confettifx;
+
+    public ParticleSystem WinParticles;
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Turn on confetti");
-            GameObject ob = Instantiate(confettifx);
-            Destroy(ob, 2.5f);
+            Debug.Log("Players has won");
+            WinParticles.Emit(100);
         }
+
     }
+
 }
