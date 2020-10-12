@@ -6,17 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class Win : MonoBehaviour
 {
-
-    public ParticleSystem WinParticles;
-
-    void OnTriggerEnter2D(Collider2D other)
+    public ParticleSystem confetti;
+    void OnParticleCollision(GameObject other)
     {
         if (other.tag == "Player")
         {
             Debug.Log("Players has won");
-            WinParticles.Emit(100);
         }
-
     }
-
 }

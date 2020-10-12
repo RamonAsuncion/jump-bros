@@ -10,6 +10,8 @@ public class P1 : MonoBehaviour
     public Animation anim;
     public Animator animator;
 
+    public ParticleSystem dust;
+
     public float JUMP_POWER = 250;
     public float MOVE_SPEED = 5.5f;
     public float CROUCH_SPEED = 1.5f;
@@ -28,10 +30,12 @@ public class P1 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W) && onGround)
         {
+            CreateDust();
             rb.AddForce(Vector2.up * JUMP_POWER);
         }
         if (Input.GetKey(KeyCode.A))
         {
+            CreateDust();
             if (crouch)
             {
                 rb.transform.Translate(Vector2.left * CROUCH_SPEED * Time.deltaTime);
@@ -130,5 +134,10 @@ public class P1 : MonoBehaviour
             Debug.Log("The player has died");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    void CreateDust()
+    {
+        dust.Play();
     }
 }

@@ -24,7 +24,6 @@ public class Finish : MonoBehaviour
         {
             print("all players finished, loading next level");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
