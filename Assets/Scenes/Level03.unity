@@ -764,7 +764,7 @@ Camera:
   field of view: 40
   orthographic: 1
   orthographic size: 10
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -11655,6 +11655,21 @@ PrefabInstance:
       propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4669841609134364868, guid: 0d90a81999918a844a914ed0bcad9543,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669841609134364869, guid: 0d90a81999918a844a914ed0bcad9543,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669841609134364869, guid: 0d90a81999918a844a914ed0bcad9543,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 491827696}
     - target: {fileID: 4669841609134364870, guid: 0d90a81999918a844a914ed0bcad9543,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11759,6 +11774,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669841610534236299, guid: 0d90a81999918a844a914ed0bcad9543,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -179
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669841610534236299, guid: 0d90a81999918a844a914ed0bcad9543,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 147
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669841610534236300, guid: 0d90a81999918a844a914ed0bcad9543,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669841610534236300, guid: 0d90a81999918a844a914ed0bcad9543,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d90a81999918a844a914ed0bcad9543, type: 3}
