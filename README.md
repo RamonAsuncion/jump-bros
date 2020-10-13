@@ -15,8 +15,6 @@ Local:
 
 The objective of the game is to get to the last game 
 
-
-
 ## Creators:
 Created by Sora2020 and Me. 
 We created this game during a Hackathon. 
@@ -33,3 +31,5 @@ We created this game during a Hackathon.
 - Option to change difficulty to save level checkpoint or reset 
 - Add wining particles (now I need to activate them)
 - Sprites full animation 
+
+# Game: Version: 0.3
