@@ -26,9 +26,10 @@ We created this game during a Hackathon.
 - Add multiplayer and keep an option to keep it local
 - New maps 
 - Page to look at all the levels with a lock symbol on them 
-- Tutorial 
+- Tutorial map!
 - Fog 
 - Better level design 
 - Better main menu 
 - Option to change difficulty to save level checkpoint or reset 
-- Add wining particles 
+- Add wining particles (now I need to activate them)
+- Sprites full animation 
