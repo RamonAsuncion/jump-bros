@@ -416,7 +416,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 6.9227166
+  orthographic size: 6.0270643
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7423,12 +7423,12 @@ PrefabInstance:
     - target: {fileID: 4669841610534236299, guid: 0d90a81999918a844a914ed0bcad9543,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -202
+      value: -200.5
       objectReference: {fileID: 0}
     - target: {fileID: 4669841610534236299, guid: 0d90a81999918a844a914ed0bcad9543,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 168
+      value: 176.1
       objectReference: {fileID: 0}
     - target: {fileID: 4669841610534236300, guid: 0d90a81999918a844a914ed0bcad9543,
         type: 3}
