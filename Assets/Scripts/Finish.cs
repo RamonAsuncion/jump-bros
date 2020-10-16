@@ -23,6 +23,7 @@ public class Finish : MonoBehaviour
         if (playersFinished == 2)
         {
             print("all players finished, loading next level");
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
