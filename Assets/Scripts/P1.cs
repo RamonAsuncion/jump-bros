@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class P1 : MonoBehaviour
 {
+    [SerializeField] Toggle audioToggle;
+
     public Rigidbody2D rb;
     public BoxCollider2D cb;
     public Animation anim;
@@ -23,6 +26,11 @@ public class P1 : MonoBehaviour
     {
         anim = GetComponent<Animation>();
         animator = GetComponent<Animator>();
+
+        if (AudioListener.volume == 0)
+        {
+            audioToggle.isOn = false;
+        }
     }
 
     // Update is called once per frame

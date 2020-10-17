@@ -3,22 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+[RequireComponent(typeof(Toggle))]
 public class MuteMainMusic : MonoBehaviour
 {
-    private bool muteMusic;
-    [SerializeField] Toggle audioToggle;
+    // Start is called before the first frame update
+    Toggle toggleButton;
 
     void Start()
     {
-        muteMusic = PlayerPrefs.GetInt("MUTED") == 1;
-        AudioListener.pause = muteMusic;
+        toggleButton = GetComponent<Toggle>();
+        if (AudioListener.volume == 0)
+        {
+            toggleButton.isOn = false;
+        }
     }
 
-    public void pressMuteButton()
+    public void pressMuteButton(bool audio)
     {
-        muteMusic = !muteMusic;
-        AudioListener.pause = muteMusic;
-        PlayerPrefs.SetInt("MUTED", muteMusic ? 1 : 0);
+        if (audio)
+        {
+            AudioListener.volume = 1;
+        }
+        else
+        {
+            AudioListener.volume = 0;
+        }
     }
 }
