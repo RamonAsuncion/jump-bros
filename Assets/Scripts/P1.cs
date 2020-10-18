@@ -38,6 +38,7 @@ public class P1 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W) && onGround)
         {
+            PlayerSound.checkWhatSoundsToPlay("jump");
             CreateDust();
             rb.AddForce(Vector2.up * JUMP_POWER);
         }
