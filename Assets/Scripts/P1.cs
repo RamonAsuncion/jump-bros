@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-
 public class P1 : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public BoxCollider2D cb;
+    // Start Variables
     public Animation anim;
     public Animator animator;
+
+
+    // -- -- -- -- -- -- --
+    public Rigidbody2D rb;
+    public BoxCollider2D cb;
     public ParticleSystem dust;
-    public AudioSource jumpsound;
+    [SerializeField] public AudioSource jumpsound;
     public float JUMP_POWER = 250;
     public float MOVE_SPEED = 5.5f;
     public float CROUCH_SPEED = 1.5f;
-
     bool onGround = false;
     public bool crouch = false;
 
@@ -48,7 +49,7 @@ public class P1 : MonoBehaviour
                 else
                 {
                     animator.Play("crawlLeft");
-                    print("crawling left");
+                    print("Crawling to the Left");
                 }
             }
             else
@@ -61,7 +62,7 @@ public class P1 : MonoBehaviour
                 else
                 {
                     animator.Play("walkLeft");
-                    print("walking left");
+                    print("Walking to the Left");
                 }
             }
         }

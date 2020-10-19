@@ -1,27 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class P2 : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public BoxCollider2D cb;
+    // Start Variables
     public Animation anim;
     public Animator animator;
 
-    public ParticleSystem dust;
 
+    // -- -- -- -- -- -- --
+    public Rigidbody2D rb;
+    public BoxCollider2D cb;
+    public ParticleSystem dust;
+    [SerializeField] public AudioSource jumpsound;
     public float JUMP_POWER = 250;
     public float MOVE_SPEED = 5.5f;
     public float CROUCH_SPEED = 1.5f;
-
     bool onGround = false;
-    bool crouch = false;
+    public bool crouch = false;
+
     private void Start()
     {
-        anim = this.gameObject.GetComponent<Animation>();
+        anim = GetComponent<Animation>();
         animator = GetComponent<Animator>();
+        jumpsound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,22 +34,22 @@ public class P2 : MonoBehaviour
         {
             CreateDust();
             rb.AddForce(Vector2.up * JUMP_POWER);
+            JumpSounds();
+
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            CreateDust();
             if (crouch)
             {
                 rb.transform.Translate(Vector2.left * CROUCH_SPEED * Time.deltaTime);
                 if (anim.isPlaying)
                 {
-                    print("doin smt");
                     return;
                 }
                 else
                 {
                     animator.Play("crawlLeft");
-                    print("crawling left");
+                    print("Crawling to the Left");
                 }
             }
             else
@@ -54,30 +57,27 @@ public class P2 : MonoBehaviour
                 rb.transform.Translate(Vector2.left * MOVE_SPEED * Time.deltaTime);
                 if (anim.isPlaying)
                 {
-                    print("doin smt");
                     return;
                 }
                 else
                 {
                     animator.Play("walkLeft");
-                    print("walking left");
+                    print("Walking to the Left");
                 }
             }
         }
         if (Input.GetKey(KeyCode.RightArrow))
-        {
             if (crouch)
             {
                 rb.transform.Translate(Vector2.right * CROUCH_SPEED * Time.deltaTime);
                 if (anim.isPlaying)
                 {
-                    print("doin smt");
                     return;
                 }
                 else
                 {
                     animator.Play("crawlRight");
-                    print("crawling right");
+                    print("Crawling to the RIGHT");
                 }
             }
             else
@@ -85,16 +85,14 @@ public class P2 : MonoBehaviour
                 rb.transform.Translate(Vector2.right * MOVE_SPEED * Time.deltaTime);
                 if (anim.isPlaying)
                 {
-                    print("doin smt");
                     return;
                 }
                 else
                 {
                     animator.Play("walkRight");
-                    print("walking right");
+                    Debug.Log("Walking to the RIGHT");
                 }
             }
-        }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             crouch = true;
@@ -110,6 +108,10 @@ public class P2 : MonoBehaviour
         {
             animator.Play("Stand");
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -123,6 +125,7 @@ public class P2 : MonoBehaviour
     {
         onGround = false;
     }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "spikes")
@@ -135,5 +138,11 @@ public class P2 : MonoBehaviour
     void CreateDust()
     {
         dust.Play();
+    }
+
+    // Plays the jumping sound. 
+    private void JumpSounds()
+    {
+        jumpsound.Play();
     }
 }
