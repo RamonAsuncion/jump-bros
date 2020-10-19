@@ -6,15 +6,12 @@ using UnityEngine.UI;
 
 public class P1 : MonoBehaviour
 {
-    [SerializeField] Toggle audioToggle;
-
     public Rigidbody2D rb;
     public BoxCollider2D cb;
     public Animation anim;
     public Animator animator;
-
     public ParticleSystem dust;
-
+    public AudioSource jumpsound;
     public float JUMP_POWER = 250;
     public float MOVE_SPEED = 5.5f;
     public float CROUCH_SPEED = 1.5f;
@@ -26,11 +23,7 @@ public class P1 : MonoBehaviour
     {
         anim = GetComponent<Animation>();
         animator = GetComponent<Animator>();
-
-        if (AudioListener.volume == 0)
-        {
-            audioToggle.isOn = false;
-        }
+        jumpsound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -38,19 +31,18 @@ public class P1 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W) && onGround)
         {
-            PlayerSound.checkWhatSoundsToPlay("jump");
             CreateDust();
             rb.AddForce(Vector2.up * JUMP_POWER);
+            JumpSounds();
+
         }
         if (Input.GetKey(KeyCode.A))
         {
-            CreateDust();
             if (crouch)
             {
                 rb.transform.Translate(Vector2.left * CROUCH_SPEED * Time.deltaTime);
                 if (anim.isPlaying)
                 {
-                    print("doin smt");
                     return;
                 }
                 else
@@ -64,7 +56,6 @@ public class P1 : MonoBehaviour
                 rb.transform.Translate(Vector2.left * MOVE_SPEED * Time.deltaTime);
                 if (anim.isPlaying)
                 {
-                    print("doin smt");
                     return;
                 }
                 else
@@ -80,13 +71,12 @@ public class P1 : MonoBehaviour
                 rb.transform.Translate(Vector2.right * CROUCH_SPEED * Time.deltaTime);
                 if (anim.isPlaying)
                 {
-                    print("doin smt");
                     return;
                 }
                 else
                 {
                     animator.Play("crawlRight");
-                    print("crawling right");
+                    print("Crawling to the RIGHT");
                 }
             }
             else
@@ -94,13 +84,12 @@ public class P1 : MonoBehaviour
                 rb.transform.Translate(Vector2.right * MOVE_SPEED * Time.deltaTime);
                 if (anim.isPlaying)
                 {
-                    print("doin smt");
                     return;
                 }
                 else
                 {
                     animator.Play("walkRight");
-                    print("walking right");
+                    Debug.Log("Walking to the RIGHT");
                 }
             }
         if (Input.GetKeyDown(KeyCode.S))
@@ -148,5 +137,11 @@ public class P1 : MonoBehaviour
     void CreateDust()
     {
         dust.Play();
+    }
+
+    // Plays the jumping sound. 
+    private void JumpSounds()
+    {
+        jumpsound.Play();
     }
 }
