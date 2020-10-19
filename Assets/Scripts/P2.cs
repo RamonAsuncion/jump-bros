@@ -14,6 +14,7 @@ public class P2 : MonoBehaviour
     public BoxCollider2D cb;
     public ParticleSystem dust;
     [SerializeField] public AudioSource jumpsound;
+    [SerializeField] public AudioSource deathsound;
     public float JUMP_POWER = 250;
     public float MOVE_SPEED = 5.5f;
     public float CROUCH_SPEED = 1.5f;
@@ -130,12 +131,13 @@ public class P2 : MonoBehaviour
     {
         if (other.tag == "spikes")
         {
+            deathsound.Play();
             Debug.Log("The player has died");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
-    void CreateDust()
+    private void CreateDust()
     {
         dust.Play();
     }
