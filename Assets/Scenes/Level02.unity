@@ -6358,6 +6358,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4669841609134364866, guid: 0d90a81999918a844a914ed0bcad9543,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4669841609134364868, guid: 0d90a81999918a844a914ed0bcad9543,
         type: 3}
       propertyPath: m_UiScaleMode
@@ -11897,8 +11902,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 86c6a322cf72ed94da3b3111ef3754cc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
-  m_Pitch: 0.6
+  m_Volume: 0.4
+  m_Pitch: 0.01
   Loop: 0
   Mute: 0
   Spatialize: 0
