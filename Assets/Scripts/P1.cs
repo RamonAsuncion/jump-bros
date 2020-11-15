@@ -41,6 +41,7 @@ public class P1 : MonoBehaviour
             JumpSounds();
 
         }
+        // Player 1 "A" control walk left and crouch. 
         if (Input.GetKey(KeyCode.A))
         {
             if (crouch)
@@ -70,6 +71,7 @@ public class P1 : MonoBehaviour
                 }
             }
         }
+         // Player 1 "D" control walk right and crouch. 
         if (Input.GetKey(KeyCode.D))
             if (crouch)
             {
@@ -97,6 +99,7 @@ public class P1 : MonoBehaviour
                     Debug.Log("Walking to the RIGHT");
                 }
             }
+            // Player 1 "S" control for crouch and stand up.
         if (Input.GetKeyDown(KeyCode.S))
         {
             crouch = true;
