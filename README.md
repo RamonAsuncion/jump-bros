@@ -32,4 +32,8 @@ We created this game during a Hackathon.
 - Add wining particles (now I need to activate them)
 - Sprites full animation 
 
+# Working on 
+- Refixing levels 
+- Last level confetti on trophy touch 
+
 # Game: Version: 0.3
