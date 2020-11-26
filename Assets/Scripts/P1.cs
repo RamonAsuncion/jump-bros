@@ -16,7 +16,7 @@ public class P1 : MonoBehaviour
     [SerializeField] public AudioSource jumpsound;
     [SerializeField] public AudioSource deathsound;
 
-    
+
     // Movement control values. 
     public float JUMP_POWER = 50;
     public float MOVE_SPEED = 3.5f;
@@ -71,7 +71,7 @@ public class P1 : MonoBehaviour
                 }
             }
         }
-         // Player 1 "D" control walk right and crouch. 
+        // Player 1 "D" control walk right and crouch. 
         if (Input.GetKey(KeyCode.D))
             if (crouch)
             {
@@ -99,7 +99,7 @@ public class P1 : MonoBehaviour
                     Debug.Log("Walking to the RIGHT");
                 }
             }
-            // Player 1 "S" control for crouch and stand up.
+        // Player 1 "S" control for crouch and stand up.
         if (Input.GetKeyDown(KeyCode.S))
         {
             crouch = true;
@@ -143,7 +143,7 @@ public class P1 : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
-    
+
     // Dust method to be called to play particles. 
     private void CreateDust()
     {
