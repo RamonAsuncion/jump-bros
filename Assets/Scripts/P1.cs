@@ -54,7 +54,7 @@ public class P1 : MonoBehaviour
                 else
                 {
                     animator.Play("crawlLeft");
-                    print("Crawling to the Left");
+                    // print("Crawling to the Left");
                 }
             }
             else
@@ -67,7 +67,7 @@ public class P1 : MonoBehaviour
                 else
                 {
                     animator.Play("walkLeft");
-                    print("Walking to the Left");
+                   // print("Walking to the Left");
                 }
             }
         }
@@ -83,7 +83,7 @@ public class P1 : MonoBehaviour
                 else
                 {
                     animator.Play("crawlRight");
-                    print("Crawling to the RIGHT");
+                    // print("Crawling to the RIGHT");
                 }
             }
             else
@@ -96,7 +96,7 @@ public class P1 : MonoBehaviour
                 else
                 {
                     animator.Play("walkRight");
-                    Debug.Log("Walking to the RIGHT");
+                   // Debug.Log("Walking to the RIGHT");
                 }
             }
         // Player 1 "S" control for crouch and stand up.
@@ -104,7 +104,7 @@ public class P1 : MonoBehaviour
         {
             crouch = true;
             cb.size = new Vector2(1.8f, 0.8f);
-            Debug.Log("Button was pressed");
+            // Debug.Log("Button was pressed");
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
@@ -139,7 +139,7 @@ public class P1 : MonoBehaviour
         if (other.tag == "spikes")
         {
             deathsound.Play();
-            Debug.Log("The player has died");
+            // Debug.Log("The player has died");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

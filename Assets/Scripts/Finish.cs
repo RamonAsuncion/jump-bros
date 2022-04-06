@@ -1,47 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Finish : MonoBehaviour
-{
-    public int playersFinished = 0;
+public class Finish : MonoBehaviour {
+    /** How many players finished */
+    public int playersFinished;
 
+    /* Text showing how many people finished */
     public Text txt;
-
-    public GameObject txtUpdate;
-
-    private void Start()
-    {
-        txt = GameObject.FindObjectOfType<Text>();
+    
+    private void Start() {
+        txt = FindObjectOfType<Text>();
     }
     // Update is called once per frame
-    void Update()
-    {
-        txt.text = playersFinished + "/2 Players finished";
-        if (playersFinished == 2)
-        {
-            print("all players finished, loading next level");
-
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
+    public void Update() {
+        // TODO: Add text box and add this object below to it.
+        // txt.text = playersFinished + "/2 Players finished";
+        if (playersFinished != 2) return;
+        Debug.Log("All players finished! Loading next level...");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        print(collision);
-        if (collision.tag == "Player")
-        {
-            print("player finished");
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Player")) {
+            // Debug.Log("Player finished!");
             playersFinished += 1;
         }
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            print("player left");
+    
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.CompareTag("Player")) {
+            // Debug.Log("Player left!");
             playersFinished -= 1;
         }
     }
