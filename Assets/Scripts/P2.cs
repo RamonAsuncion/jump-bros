@@ -35,6 +35,7 @@ public class P2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) && onGround)
         {
+            Debug.Log("Player 2 jumping.");
             CreateDust();
             rb.AddForce(Vector2.up * JUMP_POWER);
             JumpSounds();

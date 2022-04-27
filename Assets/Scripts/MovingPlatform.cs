@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-public class Elevator : MonoBehaviour 
+public class MovingPlatform : MonoBehaviour
 {
+
     /** Activate the moving platform with a button. */
     public GameObject button;
     
@@ -21,8 +22,8 @@ public class Elevator : MonoBehaviour
 
     /** The elevator going down? */
     public bool isMoving;
-
-    public Elevator(GameObject button, Rigidbody2D platform, Vector2 startPosition, Vector2 endPosition) 
+    
+    public MovingPlatform(GameObject button, Rigidbody2D platform, Vector2 startPosition, Vector2 endPosition) 
     {
         this.button = button;
         this.platform = platform;
@@ -30,13 +31,12 @@ public class Elevator : MonoBehaviour
         this.endPosition = endPosition;
     }
 
-    /*
-     * Update is called once per frame
-     */
-    public void Update() 
+   
+    // Update is called once per frame
+    void Update()
     {
-        if (platform.position.y >= startPosition.y && isMoving) 
-            platform.transform.Translate(Vector2.down * Speed * Time.deltaTime);
+        if (platform.position.x >= startPosition.x && isMoving)
+            platform.transform.Translate(Vector2.left * Speed * Time.deltaTime);
     }
 
     /*
@@ -47,23 +47,23 @@ public class Elevator : MonoBehaviour
         if (!collision.collider.CompareTag("Player"))  
             return;
         
-        if (button.GetComponent<Button>().pressed && platform.position.y <= endPosition.y) 
+        if (button.GetComponent<Button>().pressed && platform.position.x <= endPosition.x)
         {
-            platform.transform.Translate(Vector2.up * Speed * Time.deltaTime);
+            platform.transform.Translate(Vector2.right * Speed * Time.deltaTime);
             isMoving = false;
         }
-        else if (!(button.GetComponent<Button>().pressed) && platform.position.y >= startPosition.y) 
+        else if (!(button.GetComponent<Button>().pressed) && platform.position.x >= startPosition.x)
         {
             isMoving = true;
         }
     }
-
+    
     /*
      * Player is standing on the elevator.
      */
-    private void OnCollisionExit2D(Collision2D collision) 
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player")) 
+        if (collision.collider.CompareTag("Player"))
             isMoving = true;
     }
 }

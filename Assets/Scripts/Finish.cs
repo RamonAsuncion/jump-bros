@@ -2,35 +2,40 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Finish : MonoBehaviour {
+public class Finish : MonoBehaviour
+{
     /** How many players finished */
     public int playersFinished;
 
     /* Text showing how many people finished */
     public Text txt;
-    
-    private void Start() {
+
+    private void Start()
+    {
         txt = FindObjectOfType<Text>();
     }
+
     // Update is called once per frame
-    public void Update() {
+    public void Update()
+    {
         // TODO: Add text box and add this object below to it.
         // txt.text = playersFinished + "/2 Players finished";
         if (playersFinished != 2) return;
         Debug.Log("All players finished! Loading next level...");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("Player")) {
-            // Debug.Log("Player finished!");
+
+    // Player finished. 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
             playersFinished += 1;
-        }
     }
-    
-    private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.CompareTag("Player")) {
-            // Debug.Log("Player left!");
+
+    // Player left.
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
             playersFinished -= 1;
-        }
     }
 }

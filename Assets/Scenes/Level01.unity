@@ -6178,6 +6178,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1494041641 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 81401894001575234, guid: a9f479a351c4b10419b27f2ebcee491d,
+    type: 3}
+  m_PrefabInstance: {fileID: 81401894353587072}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1621254577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11390,6 +11396,26 @@ PrefabInstance:
       propertyPath: button
       value: 
       objectReference: {fileID: 786270577}
+    - target: {fileID: 81401894001575230, guid: a9f479a351c4b10419b27f2ebcee491d,
+        type: 3}
+      propertyPath: isMoving
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 81401894001575230, guid: a9f479a351c4b10419b27f2ebcee491d,
+        type: 3}
+      propertyPath: platform
+      value: 
+      objectReference: {fileID: 1494041641}
+    - target: {fileID: 81401894001575233, guid: a9f479a351c4b10419b27f2ebcee491d,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 20d58328ee816984fab3df177a7bc0c0, type: 2}
+    - target: {fileID: 81401894001575234, guid: a9f479a351c4b10419b27f2ebcee491d,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 20d58328ee816984fab3df177a7bc0c0, type: 2}
     - target: {fileID: 81401894001575236, guid: a9f479a351c4b10419b27f2ebcee491d,
         type: 3}
       propertyPath: m_RootOrder
@@ -11782,6 +11808,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1273460579}
     m_Modifications:
+    - target: {fileID: 7643908783413324416, guid: 8e2f41a907e22c14c9c62754f7dee554,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 20d58328ee816984fab3df177a7bc0c0, type: 2}
+    - target: {fileID: 7643908783413324417, guid: 8e2f41a907e22c14c9c62754f7dee554,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 20d58328ee816984fab3df177a7bc0c0, type: 2}
     - target: {fileID: 7643908783413324419, guid: 8e2f41a907e22c14c9c62754f7dee554,
         type: 3}
       propertyPath: m_RootOrder
