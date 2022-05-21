@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class P1 : MonoBehaviour
 {
@@ -11,10 +10,12 @@ public class P1 : MonoBehaviour
     private Animator _animator;
 
     /** Player body. */
-    public Rigidbody2D rigidBody;
+    [SerializeField]
+    private Rigidbody2D rigidBody;
     
     /** Environment box collisions. */
-    public BoxCollider2D boxCollide;
+    [SerializeField]
+    private BoxCollider2D boxCollide;
     
     /** Dust particle when player jumps. */
     [SerializeField]
@@ -29,19 +30,19 @@ public class P1 : MonoBehaviour
     private AudioSource deathSound;
 
     /** The jump power of the player. */
-    public float JUMP_POWER = 50F;
+    private const float JumpPower = 350F;
     
     /** The speed the player is moving. */
-    public float MOVE_POWER = 3.5F;
+    private const float MovePower = 3.5F;
     
     /** The speed at which the player crouches. */
-    public float CROUCH_SPEED = 1.5F;
+    private const float CrouchSpeed = 1.5F;
     
     /** Player is touching the ground? */
-    public bool onGround;
+    private bool _onGround;
     
     /** Player is crouching? */
-    public bool crouch;
+    private bool _crouch;
     
     /*
      * Get the components for the player.
@@ -73,15 +74,15 @@ public class P1 : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.S))
         {
-            crouch = true;
+            _crouch = true;
             boxCollide.size = new Vector2(1.8f, 0.8f);
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
-            crouch = false;
+            _crouch = false;
             boxCollide.size = new Vector2(0.8f, 1.74f);
         }
-
+        
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
         {
             _animator.Play("Stand");
@@ -95,14 +96,14 @@ public class P1 : MonoBehaviour
     {
         if (!Input.GetKey(KeyCode.D) || _playerAnimation.isPlaying) return;
         
-        if (crouch)
+        if (_crouch)
         {
-            rigidBody.transform.Translate(Vector2.right * CROUCH_SPEED * Time.deltaTime);
+            rigidBody.transform.Translate(Vector2.right * CrouchSpeed * Time.deltaTime);
             _animator.Play("crawlRight");
         }
         else
         {
-            rigidBody.transform.Translate(Vector2.right * MOVE_POWER * Time.deltaTime);
+            rigidBody.transform.Translate(Vector2.right * MovePower * Time.deltaTime);
             _animator.Play("walkRight");
         }
     }
@@ -114,14 +115,14 @@ public class P1 : MonoBehaviour
     {
         if (!Input.GetKey(KeyCode.A) || _playerAnimation.isPlaying) return;
         
-        if (crouch)
+        if (_crouch)
         {
-            rigidBody.transform.Translate(Vector2.left * CROUCH_SPEED * Time.deltaTime);
+            rigidBody.transform.Translate(Vector2.left * CrouchSpeed * Time.deltaTime);
             _animator.Play("crawlLeft");
         }
         else
         {
-            rigidBody.transform.Translate(Vector2.left * MOVE_POWER * Time.deltaTime);
+            rigidBody.transform.Translate(Vector2.left * MovePower * Time.deltaTime);
             _animator.Play("walkLeft");
         }
     }
@@ -131,9 +132,9 @@ public class P1 : MonoBehaviour
      */
     private void PlayerJump()
     {
-        if (!Input.GetKeyDown(KeyCode.W) || !onGround || _playerAnimation.isPlaying) return;
+        if (!Input.GetKeyDown(KeyCode.W) || !_onGround || _playerAnimation.isPlaying) return;
         
-        rigidBody.AddForce(Vector2.up * JUMP_POWER);
+        rigidBody.AddForce(Vector2.up * JumpPower);
         CreateDust();
         JumpSounds();
     }
@@ -141,18 +142,17 @@ public class P1 : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Ground") || collision.collider.CompareTag("Player"))
-            onGround = true;
+            _onGround = true;
     }
     
-    private void OnCollisionExit2D()  { onGround = false; }
+    private void OnCollisionExit2D()  { _onGround = false; }
 
     /*
      * Player touches the object with the tag "spikes".
      */
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("spikes") && !other.CompareTag("Player")) 
-            return;
+        if (!other.CompareTag("spikes") && !other.CompareTag("Player")) return;
         
         deathSound.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

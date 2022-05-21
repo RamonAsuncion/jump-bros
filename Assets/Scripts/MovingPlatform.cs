@@ -2,7 +2,6 @@
 
 public class MovingPlatform : MonoBehaviour
 {
-
     /** Activate the moving platform with a button. */
     public GameObject button;
     
@@ -20,10 +19,14 @@ public class MovingPlatform : MonoBehaviour
     /** How fast the platform is. (value has to be small)*/
     private const float Speed = 1.0F;
 
-    /** The elevator going down? */
+    /** The elevator going moving? */
     public bool isMoving;
     
-    public MovingPlatform(GameObject button, Rigidbody2D platform, Vector2 startPosition, Vector2 endPosition) 
+    
+    /**
+     * Construct a moving platform (side to side) for the player.
+     */
+    public MovingPlatform(GameObject button, Rigidbody2D platform, Vector2 startPosition, Vector2 endPosition, GameObject player) 
     {
         this.button = button;
         this.platform = platform;
@@ -33,7 +36,7 @@ public class MovingPlatform : MonoBehaviour
 
    
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (platform.position.x >= startPosition.x && isMoving)
             platform.transform.Translate(Vector2.left * Speed * Time.deltaTime);
@@ -44,8 +47,8 @@ public class MovingPlatform : MonoBehaviour
      */
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!collision.collider.CompareTag("Player"))  
-            return;
+        if (!collision.collider.CompareTag("Player")) return;
+        // collision.transform.parent = null;
         
         if (button.GetComponent<Button>().pressed && platform.position.x <= endPosition.x)
         {
@@ -63,7 +66,8 @@ public class MovingPlatform : MonoBehaviour
      */
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
-            isMoving = true;
+        if (!collision.collider.CompareTag("Player")) return;
+        collision.transform.parent = transform;
+        isMoving = true;
     }
 }

@@ -44,8 +44,7 @@ public class Elevator : MonoBehaviour
      */
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!collision.collider.CompareTag("Player"))  
-            return;
+        if (!collision.collider.CompareTag("Player")) return;
         
         if (button.GetComponent<Button>().pressed && platform.position.y <= endPosition.y) 
         {
