@@ -48,7 +48,6 @@ public class MovingPlatform : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (!collision.collider.CompareTag("Player")) return;
-        // collision.transform.parent = null;
         
         if (button.GetComponent<Button>().pressed && platform.position.x <= endPosition.x)
         {
@@ -67,6 +66,8 @@ public class MovingPlatform : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (!collision.collider.CompareTag("Player")) return;
+        
+        // Player moves with the elevator
         collision.transform.parent = transform;
         isMoving = true;
     }

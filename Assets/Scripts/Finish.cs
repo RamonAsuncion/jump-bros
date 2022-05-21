@@ -1,41 +1,49 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+// TODO: Add comments to all the code that is not intuitive to understand. (ADD PERIOD)
 
 public class Finish : MonoBehaviour
 {
-    /** How many players finished */
-    public int playersFinished;
+    /** How many players finished. */
+    private int _playersFinished;
 
-    /* Text showing how many people finished */
-    public Text txt;
-
+    /* Text showing how many people finished. */
+    [SerializeField]
+    private Text txt;
+    
+    
+    /**
+     * Assign the components for the text.
+     */
     private void Start()
     {
-        txt = FindObjectOfType<Text>();
+        txt = gameObject.GetComponent<Text>();
     }
 
-    // Update is called once per frame
+    /*
+     * Update is called once per frame
+     */
     public void Update()
     {
-        // TODO: Add text box and add this object below to it.
-        // txt.text = playersFinished + "/2 Players finished";
-        if (playersFinished != 2) return;
+        txt.text = _playersFinished + "/2 Players finished";
+        if (_playersFinished != 2) return;
         Debug.Log("All players finished! Loading next level...");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    // Player finished. 
+    // Player reached the exit. 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-            playersFinished += 1;
+            _playersFinished++;
     }
 
-    // Player left.
+    // Player stepped out of the exit.
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-            playersFinished -= 1;
+            _playersFinished -= 1;
     }
 }

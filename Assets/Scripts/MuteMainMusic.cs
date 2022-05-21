@@ -6,7 +6,10 @@ public class MuteMainMusic : MonoBehaviour
 {
     // Start is called before the first frame update
     private Toggle _toggleButton;
-
+    
+    /**
+     * Get the toggle button and enable the music as default.
+     */
     private void Start()
     {
         _toggleButton = GetComponent<Toggle>();
@@ -14,6 +17,9 @@ public class MuteMainMusic : MonoBehaviour
             _toggleButton.enabled = false;
     }
 
+    /**
+     * Pause/Play the audio in the main screen
+     */
     public void PressMuteButton(bool audioOn) 
     {
         AudioListener.volume = audioOn ? 1 : 0;
