@@ -2,45 +2,49 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-// TODO: Add comments to all the code that is not intuitive to understand. (ADD PERIOD)
-
 public class Finish : MonoBehaviour
 {
     /** How many players finished. */
-    private int _playersFinished;
+    [HideInInspector]
+    public static int _playersFinished; 
 
-    /* Text showing how many people finished. */
+    /** Text showing how many people finished. */
     [SerializeField]
     private Text txt;
-    
-    
-    /**
-     * Assign the components for the text.
-     */
+
+    /// <summary>
+    /// Assign the components for the text.
+    /// </summary>
     private void Start()
     {
         txt = gameObject.GetComponent<Text>();
     }
 
-    /*
-     * Update is called once per frame
-     */
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     public void Update()
     {
-        txt.text = _playersFinished + "/2 Players finished";
+        txt.text = _playersFinished + "/2 Players finished.";
         if (_playersFinished != 2) return;
-        Debug.Log("All players finished! Loading next level...");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        _playersFinished = 0;
     }
 
-    // Player reached the exit. 
+   /// <summary>
+   /// Player reached the exit.
+   /// </summary>
+   /// <param name="collision">The exit door.</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
             _playersFinished++;
     }
-
-    // Player stepped out of the exit.
+   
+    /// <summary>
+    /// Player stepped out of the exit.
+    /// </summary>
+    /// <param name="collision">The exit door.</param>
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

@@ -44,9 +44,9 @@ public class P2 : MonoBehaviour
     /** Player is crouching? */
     private bool _crouch;
     
-    /*
-     * Get the components for the player.
-     */
+    /// <summary>
+    /// Get the components for the player.
+    /// </summary>
     private void Start()
     {
         _playerAnimation = GetComponent<Animation>();
@@ -54,9 +54,9 @@ public class P2 : MonoBehaviour
         jumpSound = GetComponent<AudioSource>();
     }
 
-    /*
-     *  Update is called once per frame
-     */
+    /// <summary>
+    ///  Update is called once per frame
+    /// </summary>
     private void Update()
     {
         PlayerJump();
@@ -65,9 +65,9 @@ public class P2 : MonoBehaviour
         PlayerStandUp();
     }
 
-    /*
-     * Player stand up.
-     */
+    /// <summary>
+    /// Player stand up.
+    /// </summary>
     private void PlayerStandUp()
     {
         if (_playerAnimation.isPlaying) return;
@@ -89,9 +89,9 @@ public class P2 : MonoBehaviour
         }
     }
 
-    /*
-     * Player moving right.
-     */
+    /// <summary>
+    /// Player moving right.
+    /// </summary>
     private void PlayerMoveRight()
     {
         if (!Input.GetKey(KeyCode.RightArrow) || _playerAnimation.isPlaying) return;
@@ -108,9 +108,9 @@ public class P2 : MonoBehaviour
         }
     }
 
-    /*
-     * Player moving left.
-     */
+    /// <summary>
+    /// Player moving left.
+    /// </summary>
     private void PlayerMoveLeft()
     {
         if (!Input.GetKey(KeyCode.LeftArrow) || _playerAnimation.isPlaying) return;
@@ -127,9 +127,9 @@ public class P2 : MonoBehaviour
         }
     }
     
-    /*
-     * Player jumping.
-     */
+    /// <summary>
+    /// Player jumping.
+    /// </summary>
     private void PlayerJump()
     {
         if (!Input.GetKeyDown(KeyCode.UpArrow) || !_onGround || _playerAnimation.isPlaying) return;
@@ -139,32 +139,40 @@ public class P2 : MonoBehaviour
         JumpSounds();
     }
 
+    /// <summary>
+    /// Player is touching the "ground".
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Ground") || collision.collider.CompareTag("Player"))
             _onGround = true;
     }
     
+    /// <summary>
+    /// Player is NOT touching the "ground"
+    /// </summary>
     private void OnCollisionExit2D()  { _onGround = false; }
 
-    /*
-     * Player touches the object with the tag "spikes".
-     */
-    public void OnTriggerEnter2D(Collider2D other)
+    /// <summary>
+    /// Player touches the object with the tag "spikes".
+    /// </summary>
+    /// <param name="collider">Deadly spikes.</param>
+    public void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!other.CompareTag("spikes") && !other.CompareTag("Player")) return;
+        if (!collider.CompareTag("spikes") && !collider.CompareTag("Player")) return;
         
         deathSound.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    /*
-     * Dust method to be called to play particles.
-     */
+    /// <summary>
+    /// Dust method to be called to play particles.
+    /// </summary>
     private void CreateDust()  {  dust.Play();  }
 
-    /*
-     * Plays the jumping sound. 
-     */
+    /// <summary>
+    /// Plays the jumping sound. 
+    /// </summary>
     private void JumpSounds()  { jumpSound.Play(); }
 }

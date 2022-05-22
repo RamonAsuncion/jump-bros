@@ -23,10 +23,14 @@ public class MovingPlatform : MonoBehaviour
     public bool isMoving;
     
     
-    /**
-     * Construct a moving platform (side to side) for the player.
-     */
-    public MovingPlatform(GameObject button, Rigidbody2D platform, Vector2 startPosition, Vector2 endPosition, GameObject player) 
+    /// <summary>
+    /// Construct a moving platform (side to side) for the player.
+    /// </summary>
+    /// <param name="button">to turn activate the elevator.</param>
+    /// <param name="platform">the object that is acting as the elevator.</param>
+    /// <param name="startPosition">the start position of the elevator.</param>
+    /// <param name="endPosition"><the end position of the elevator./param>
+    public MovingPlatform(GameObject button, Rigidbody2D platform, Vector2 startPosition, Vector2 endPosition) 
     {
         this.button = button;
         this.platform = platform;
@@ -34,17 +38,19 @@ public class MovingPlatform : MonoBehaviour
         this.endPosition = endPosition;
     }
 
-   
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     private void Update()
     {
         if (platform.position.x >= startPosition.x && isMoving)
             platform.transform.Translate(Vector2.left * Speed * Time.deltaTime);
     }
 
-    /*
-     * The user is pressing the button to activate the elevator.
-     */
+    /// <summary>
+    /// The user is pressing the button to activate the elevator.
+    /// </summary>
+    /// <param name="collision">The elevator.</param>
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (!collision.collider.CompareTag("Player")) return;
@@ -60,9 +66,10 @@ public class MovingPlatform : MonoBehaviour
         }
     }
     
-    /*
-     * Player is standing on the elevator.
-     */
+    /// <summary>
+    ///  Player is standing on the elevator.
+    /// </summary>
+    /// <param name="collision">The elevator.</param>
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (!collision.collider.CompareTag("Player")) return;

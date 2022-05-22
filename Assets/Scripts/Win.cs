@@ -1,24 +1,24 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(ParticleSystem))]
-public class Win : MonoBehaviour {
-    // TODO: Fix the particle collision.
-    
+public class Win : MonoBehaviour 
+{
     /** Confetti particles when the player wins. */ 
     [SerializeField]
     private ParticleSystem confettiEffect;
 
-    /*
-     * Get the confetti effect.
-     */
+    /// <summary>
+    /// Get the confetti effect.
+    /// </summary>
     public void Awake()
     {
         confettiEffect.GetComponent<ParticleSystem>();
     }
 
-    /*
-     * When player clicks the confetti particles they activate.
-     */
+    /// <summary>
+    /// When player clicks the confetti particles they activate.
+    /// </summary>
+    /// <param name="collide">The trophy shooting out confetti.</param>
     public void OnTriggerEnter2D(Collider2D collide)
     {
         Debug.Log("Collision with the particle");
